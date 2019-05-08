@@ -5,10 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "push": "vue-cli-service build && clasp push -f"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
   },

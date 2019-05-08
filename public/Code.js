@@ -5,47 +5,27 @@ function doGet() {
   );
 }
 
+/**
+ * Will be implemented
+ */
 function doPost(e) {
-  // JSONをパース
-  if (e == null || e.postData == null || e.postData.contents == null) {
-    return;
-  }
-  var requestJSON = e.postData.contents;
-  var requestObj = JSON.parse(requestJSON);
+  // Logger.log("doPost");
+  // Logger.log(e);
+  // if (e == null || e.postData == null || e.postData.contents == null) {
+  //   return;
+  // }
+  // var requestJSON = e.postData.contents;
+  // var requestObj = JSON.parse(requestJSON);
+  // var ss = SpreadsheetApp.getActive();
+  // var sheet = ss.getActiveSheet();
+  // sheet.appendRow(values);
+}
 
-  //
-  // 結果をスプレッドシートに追記
-  //
-
+function addData(rawParams) {
+  Logger.log("addData");
+  var params = JSON.parse(rawParams);
   var ss = SpreadsheetApp.getActive();
   var sheet = ss.getActiveSheet();
-
-  // ヘッダ行を取得
-  var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-
-  // ヘッダに対応するデータを取得
-  var values = [
-    requestObj.familyName,
-    requestObj.firstName,
-    requestObj.comment
-  ];
-  // for (i in headers){
-  //   var header = headers[i];
-  //   var val = "";
-  //   switch(header) {
-  //     case "date":
-  //       val = new Date();
-  //       break;
-  //     case "mimeType":
-  //       val = e.postData.type;
-  //       break;
-  //     default:
-  //       val = requestObj[header];
-  //       break;
-  //   }
-  //   values.push(val);
-  // }
-
-  // 行を追加
+  var values = [params.familyName, params.firstName, params.comment];
   sheet.appendRow(values);
 }

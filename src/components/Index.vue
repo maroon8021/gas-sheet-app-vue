@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "Index",
   data() {
@@ -37,12 +36,13 @@ export default {
   },
   methods: {
     onClick: function(e) {
-      console.log(`Current Data : ${this.familyName}`);
-      axios.post("window.location.origin", {
-        familyName: this.familyName,
-        firstName: this.firstName,
-        comment: this.comment
-      });
+      google.script.run.addData(
+        JSON.stringify({
+          familyName: this.familyName,
+          firstName: this.firstName,
+          comment: this.comment
+        })
+      );
     }
   }
 };
